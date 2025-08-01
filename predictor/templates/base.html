@@ -1,0 +1,46 @@
+{% load static %}
+
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HeartHealth{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <!-- Header -->
+  <header>
+    
+    <div class="logo"><a href="{% url 'profile' %}" class="nav-link">HeartHealth</a></div>
+    {% if not user.is_authenticated %}
+    <nav>
+      <a href="{% url 'home' %}" class="nav-link">Home</a>
+      <a href="{% url 'about' %}" class="nav-link">Contact Us</a>
+    </nav>
+    <div class="cta-buttons">
+      <button class="btn btn-secondary"><a href="{% url 'login' %}">Log in</a></button>
+      <button class="btn btn-primary"><a href="{% url 'register' %}">Sign up</a></button>
+    </div>
+    {% else %}
+    <nav>
+        <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+        <a href="{% url 'symptom' %}" class="nav-link">SymptCVD</a>
+        <a href="{% url 'predict' %}" class="nav-link">CVD</a>
+        <a href="{% url 'bmi' %}" class="nav-link">BMI Calculator</a>
+        <a href="{% url 'about' %}" class="nav-link">Contact Us</a>
+    </nav>
+    <div class="cta-buttons">
+        <button class="btn btn-secondary"><a href="{% url 'logout' %}">Log out</a></button>
+    </div>
+    {% endif %}
+  </header>
+    
+    
+            <div class="col-lg-8">
+                {% block content %}{% endblock %}
+            </div>
+
+</body>
+</html>

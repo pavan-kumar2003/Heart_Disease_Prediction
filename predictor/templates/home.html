@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your Health, Our Priority</h1>
+      <p>At HeartHealth, we believe that awareness is the first step toward prevention. Our platform empowers you to understand and manage your heart health, providing insights into potential risks and guiding you toward a healthier lifestyle. With the right knowledge, you can make informed choices to protect your heart and live a vibrant, fulfilling life.</p>
+      
+      <h1>Start Today for a Healthier Tomorrow</h1>
+      <p>Your heart health journey starts here. At HeartHealth, we’re committed to helping you understand the factors that affect your heart’s well-being. By assessing your personal health information, our platform provides a predictive analysis that can guide you in making heart-healthy lifestyle changes. Because when it comes to your heart, early insights and proactive steps are key to a long, healthy life.</p>
+      <button class="btn-primary"><a href="{% url 'register' %}">Get Started</a></button>
+    </div>
+    <div class="hero-image">
+      <img src="{% static 'images/pimg.png' %}" alt="Healthcare professional and patient" style="width: 100%; border-radius: 8px;">
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <div class="service-box">
+        <img src="https://via.placeholder.com/100" alt="Heart Health Analysis">
+        <h3>Heart Health Analysis</h3>
+        <p>Understand your heart’s current condition with our predictive analysis and personalized insights.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://via.placeholder.com/100" alt="Risk Assessment">
+        <h3>Risk Assessment</h3>
+        <p>Evaluate potential heart disease risks using evidence-based algorithms tailored to your health profile.</p>
+      </div>
+      <div class="service-box">
+        <img src="https://via.placeholder.com/100" alt="Preventive Guidance">
+        <h3>Preventive Guidance</h3>
+        <p>Receive expert recommendations and lifestyle adjustments to support long-term heart health.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Site Says</h2>
+    <div class="testimonial-box">
+      <p>"Empowering you with early insights—our heart disease prediction tool is designed to provide personalized assessments that help you take control of your heart health before it's too late"</p>
+      <p>- HeartHealth Team</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 HeartHealth. All rights reserved.</p>
+    <p>Terms of Service | Privacy Policy</p>
+  </footer>
+  {%endblock%}

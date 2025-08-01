@@ -1,0 +1,50 @@
+<!-- register.html -->
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="form-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 align="center">Register</h4>
+                </div>
+                <br>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <br>
+                        <button type="submit" class="submit-btn" >Register</button>
+                        <br>    
+                    </form>
+                </div>
+                
+                <div class="card-footer text-center">
+                    <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+   
+    a{
+        color: #007bff;
+    }
+    
+   
+    .form-container {
+    width: 100%;
+    max-width: 750px;
+    background-color: mintcream;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+  }
+</style>
+{% endblock %}

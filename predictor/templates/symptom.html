@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+{% block title %}symptom{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2 style="text-align: center; margin-bottom: 1rem;">Heart Disease Prediction</h2>
+  
+    <!-- Scrollable Form Container -->
+    <div class="form-scrollable">
+        <form id="form-id" method="post">
+            {% csrf_token %}
+  
+            <table class="form-table">
+                <tr>
+                    <td class="label"><label for="age">Age:</label></td>
+                    <td>{{ form.age }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="sex">Gender:</label></td>
+                    <td>{{ form.sex }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="HighBP">High Blood Pressure:</label></td>
+                    <td>{{ form.HighBP }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="HighChol">High Cholesterol:</label></td>
+                    <td>{{ form.HighChol }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="CholCheck">Cholesterol Check:</label></td>
+                    <td>{{ form.CholCheck }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="BMI">BMI:</label></td>
+                    <td>{{ form.BMI }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="Smoker">Smoker:</label></td>
+                    <td>{{ form.Smoker }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="Stroke">Stroke:</label></td>
+                    <td>{{ form.Stroke }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="Diabetes">Diabetes:</label></td>
+                    <td>{{ form.Diabetes }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="PhysActivity">Physical Activity:</label></td>
+                    <td>{{ form.PhysActivity }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="HvyAlcoholConsump">Heavy Alcohol Consumption:</label></td>
+                    <td>{{ form.HvyAlcoholConsump }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="AnyHealthcare">Any Healthcare:</label></td>
+                    <td>{{ form.AnyHealthcare }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="NoDocbcCost">No Doctor because of Cost:</label></td>
+                    <td>{{ form.NoDocbcCost }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="GenHlth">General Health (1-5):</label></td>
+                    <td>{{ form.GenHlth }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="MentHlth">Mental Health Days:</label></td>
+                    <td>{{ form.MentHlth }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="PhysHlth">Physical Health Days:</label></td>
+                    <td>{{ form.PhysHlth }}</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="DiffWalk">Difficulty Walking:</label></td>
+                    <td>{{ form.DiffWalk }}</td>
+                </tr>
+            </table>
+  
+        </form>
+    </div>
+    
+    <div style="padding-top: 1rem;">
+      <button type="submit" form="form-id" class="submit-btn">Predict</button>
+    </div>
+  
+    {% if result %}
+        <div class="alert alert-info mt-3" style="margin-top: 1rem; text-align: center; padding: 1rem; border-radius: 5px; background-color: #e9f7ef; color: #31708f;">
+            <strong>Prediction Result:</strong> {{ result }}
+        </div>
+    {% endif %}
+  </div>
+
+  <br><br>
+  
+  <div class="form-container">
+      <h3 align="center">Description of Heart Disease Parameters</h3>
+      <br>
+      <ul>
+          <li><strong>Age:</strong> Age of the individual in years. Recommended range: <span style="color: #3498db;">29-77</span>.</li>
+          <br>
+          <li><strong>Gender:</strong> Gender of the individual. 
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Male</li>
+                  <li><span style="color: #3498db;">0</span>: Female</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Heart Disease or Attack:</strong> Whether the individual has heart disease or attack. 
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>High Blood Pressure:</strong> Indicates if the individual has high blood pressure.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>High Cholesterol:</strong> Indicates if the individual has high cholesterol.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Cholesterol Check:</strong> Whether the individual has had a cholesterol check.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>BMI:</strong> Body Mass Index of the individual. Recommended range: <span style="color: #3498db;">18.5-40.0</span>.</li>
+          <br>
+          <li><strong>Smoker:</strong> Whether the individual is a smoker.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Stroke:</strong> Indicates if the individual has had a stroke.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Diabetes:</strong> Indicates if the individual has diabetes.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Physical Activity:</strong> Indicates if the individual engages in physical activity.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Heavy Alcohol Consumption:</strong> Whether the individual consumes alcohol heavily.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Any Healthcare:</strong> Whether the individual has access to any healthcare.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>No Doctor because of Cost:</strong> Whether the individual avoided doctor visits due to cost.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>General Health:</strong> Self-rated general health (1-5). 
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Excellent</li>
+                  <li><span style="color: #3498db;">2</span>: Very Good</li>
+                  <li><span style="color: #3498db;">3</span>: Good</li>
+                  <li><span style="color: #3498db;">4</span>: Fair</li>
+                  <li><span style="color: #3498db;">5</span>: Poor</li>
+              </ul>
+          </li>
+          <br>
+          <li><strong>Mental Health Days:</strong> Days of poor mental health in the past 30 days. Recommended range: <span style="color: #3498db;">0-30</span>.</li>
+          <br>
+          <li><strong>Physical Health Days:</strong> Days of poor physical health in the past 30 days. Recommended range: <span style="color: #3498db;">0-30</span>.</li>
+          <br>
+          <li><strong>Difficulty Walking:</strong> Whether the individual has difficulty walking.
+              <ul>
+                  <li><span style="color: #3498db;">1</span>: Yes</li>
+                  <li><span style="color: #3498db;">0</span>: No</li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+
+  <style>
+    .form-container {
+    width: 100%;
+    max-width: 650px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    margin: auto;
+  }
+
+  /* Scrollable Form */
+  .form-scrollable {
+    max-height: 650px; /* Set max height to make the form scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 1rem;
+    padding-right: 10px; /* Add padding for better scroll bar alignment */
+  }
+
+  /* Tabular Format */
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .form-table td {
+    padding: 0.8rem;
+    vertical-align: middle;
+  }
+
+  .label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 1rem;
+    color: #333;
+  }
+
+  .input-box {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  /* Submit Button Styling */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,228 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    background-color: #f7f9fc;
+    align-items: center;
+    color: #333;
+}
+  header {
+    background-color: #3498db;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: #fff;
+}
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+header nav {
+  display: flex;
+  gap: 1rem;
+}
+header .nav-link {
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+header .nav-link:hover {
+  color: #ffd700;
+}
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  /* Header */
+  
+  .logo {
+    font-size: 24px;
+    color: #2f855a;
+    font-weight: bold;
+  }
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  .nav-link {
+    font-weight: 500;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+.cta-buttons .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-primary {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.cta-buttons .btn-secondary {
+    background-color: #2980b9;
+    color: #fff;
+}
+.cta-buttons .btn-secondary:hover {
+    background-color: #1f6395;
+}
+.cta-buttons .btn-primary {
+    background-color: #e74c3c;
+    color: #fff;
+}
+.cta-buttons .btn-primary:hover {
+    background-color: #c0392b;
+}
+  /* Hero Section */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #e6f5ee;
+  }
+  .hero-text {
+    max-width: 50%;
+  }
+  .hero-text h1 {
+    font-size: 48px;
+    color: #2f855a;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 18px;
+    color: #4a5568;
+    margin-bottom: 20px;
+  }
+  /* Services Section */
+  .services {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #ffffff;
+  }
+  .services h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  .services-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  .service-box {
+    width: 250px;
+    padding: 20px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .service-box img {
+    width: 100px;
+    margin-bottom: 15px;
+  }
+  /* Testimonials Section */
+  .testimonials {
+    background-color: #f7f9fc;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  .testimonials h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  .testimonial-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 650px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    margin: auto;
+  }
+
+  /* Scrollable Form */
+  .form-scrollable {
+    max-height: 650px; /* Set max height to make the form scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 1rem;
+    padding-right: 10px; /* Add padding for better scroll bar alignment */
+  }
+
+  /* Tabular Format */
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .form-table td {
+    padding: 0.8rem;
+    vertical-align: middle;
+  }
+
+  .label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 1rem;
+    color: #333;
+  }
+
+  .input-box {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  /* Submit Button Styling */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .submit-btn:hover {
+    background-color: #218838;
+  }

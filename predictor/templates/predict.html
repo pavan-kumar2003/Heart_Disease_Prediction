@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% block title %}Predict{% endblock %}
+{% block content %}
+<div class="form-container">
+  <h2 style="text-align: center; margin-bottom: 1rem;">Heart Disease Prediction</h2>
+
+  <!-- Scrollable Form Container -->
+  <div class="form-scrollable">
+      <form id="form-id" method="post">
+          {% csrf_token %}
+
+          <table class="form-table">
+              <tr>
+                  <td class="label"><label for="age">Age:</label></td>
+                  <td>{{ form.age }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="gender">Gender:</label></td>
+                  <td>{{ form.sex }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="cp">Chest Pain Type:</label></td>
+                  <td>{{ form.cp }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="trestbps">Resting Blood Pressure:</label></td>
+                  <td>{{ form.trestbps }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="chol">Cholesterol:</label></td>
+                  <td>{{ form.chol }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label></td>
+                  <td>{{ form.fbs }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="restecg">Resting Electrocardiographic Results:</label></td>
+                  <td>{{ form.restecg }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="thalach">Maximum Heart Rate Achieved:</label></td>
+                  <td>{{ form.thalach }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="exang">Exercise Induced Angina:</label></td>
+                  <td>{{ form.exang }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="oldpeak">Oldpeak:</label></td>
+                  <td>{{ form.oldpeak }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="slope">Slope of the Peak Exercise ST Segment:</label></td>
+                  <td>{{ form.slope }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="ca">Number of Major Vessels (0-3) Colored by Fluoroscopy:</label></td>
+                  <td>{{ form.ca }}</td>
+              </tr>
+              <tr>
+                  <td class="label"><label for="thal">Thalassemia:</label></td>
+                  <td>{{ form.thal }}</td>
+              </tr>
+          </table>
+
+          
+      </form>
+  </div>
+    <div style="padding-top: 1rem;">
+    <button type="submit" form="form-id" class="submit-btn">Predict</button>
+    </div>
+  {% if result %}
+      <div class="alert alert-info mt-3" style="margin-top: 1rem; text-align: center; padding: 1rem; border-radius: 5px; background-color: #e9f7ef; color: #31708f;">
+          <strong>Prediction Result:</strong> {{ result }}
+        
+      </div>
+  {% endif %}
+</div>
+<br><br>
+<div class="form-container">
+    <h3 align="center">Description of Heart Disease Parameters</h3>
+    <br>
+    <ul">
+        <li><strong>Age:</strong> Age of the individual in years. Recommended range: <span style="color: #3498db;">29-77</span>.</li>
+        <br>
+        <li><strong>Gender:</strong> Gender of the individual. 
+            <ul>
+                <li><span style="color: #3498db;">1</span>: Male</li>
+                <li><span style="color: #3498db;">0</span>: Female</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Chest Pain Type:</strong> 
+            <ul>
+                <li><span style="color: #3498db;">0</span>: Typical Angina</li>
+                <li><span style="color: #3498db;">1</span>: Atypical Angina</li>
+                <li><span style="color: #3498db;">2</span>: Non-anginal Pain</li>
+                <li><span style="color: #3498db;">3</span>: Asymptomatic</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Resting Blood Pressure:</strong> Resting blood pressure in mm Hg. Recommended range: <span style="color: #3498db;">94-200</span>.</li>
+        <br>
+        <li><strong>Cholesterol:</strong> Serum cholesterol in mg/dl. Recommended range: <span style="color: #3498db;">126-564</span>.</li>
+        <br>
+        <li><strong>Fasting Blood Sugar:</strong> Indicates if fasting blood sugar > 120 mg/dl. 
+            <ul>
+                <li><span style="color: #3498db;">1</span>: True</li>
+                <li><span style="color: #3498db;">0</span>: False</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Resting Electrocardiographic Results:</strong>
+            <ul>
+                <li><span style="color: #3498db;">0</span>: Normal</li>
+                <li><span style="color: #3498db;">1</span>: ST-T wave abnormality</li>
+                <li><span style="color: #3498db;">2</span>: Left ventricular hypertrophy</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Maximum Heart Rate Achieved:</strong> Maximum heart rate during exercise. Recommended range: <span style="color: #3498db;">71-202</span>.</li>
+        <br>
+        <li><strong>Exercise Induced Angina:</strong> Indicates if angina is induced by exercise. 
+            <ul>
+                <li><span style="color: #3498db;">1</span>: Yes</li>
+                <li><span style="color: #3498db;">0</span>: No</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Oldpeak:</strong> ST depression induced by exercise relative to rest. Recommended range: <span style="color: #3498db;">0.0-6.2</span>.</li>
+        <br>
+        <li><strong>Slope:</strong> Slope of the peak exercise ST segment.
+            <ul>
+                <li><span style="color: #3498db;">0</span>: Upsloping</li>
+                <li><span style="color: #3498db;">1</span>: Flat</li>
+                <li><span style="color: #3498db;">2</span>: Downsloping</li>
+            </ul>
+        </li>
+        <br>
+        <li><strong>Number of Major Vessels:</strong> Number of major vessels (0-3) colored by fluoroscopy. Range: <span style="color: #3498db;">0-3</span>.</li>
+        <br>
+        <li><strong>Thalassemia:</strong> 
+            <ul>
+                <li><span style="color: #3498db;">0</span>: Normal</li>
+                <li><span style="color: #3498db;">1</span>: Fixed defect</li>
+                <li><span style="color: #3498db;">2</span>: Reversible defect</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<style>
+    .form-container {
+    width: 100%;
+    max-width: 650px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    margin: auto;
+  }
+
+  /* Scrollable Form */
+  .form-scrollable {
+    max-height: 650px; /* Set max height to make the form scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 1rem;
+    padding-right: 10px; /* Add padding for better scroll bar alignment */
+  }
+
+  /* Tabular Format */
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .form-table td {
+    padding: 0.8rem;
+    vertical-align: middle;
+  }
+
+  .label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 1rem;
+    color: #333;
+  }
+
+  .input-box {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  /* Submit Button Styling */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+</style>
+{% endblock %}
